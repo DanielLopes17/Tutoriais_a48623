@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveShell : MonoBehaviour {
 
-    public float speed = 1.0f;
+    public float speed = 1.1f;
 
 
     void Update() {
