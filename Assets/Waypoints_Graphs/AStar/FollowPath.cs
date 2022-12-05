@@ -34,6 +34,12 @@ public class FollowPath : MonoBehaviour
         currentWP = 0;
     }
 
+    public void GoToTanks()
+    {
+        g.AStar(currentNode, wps[9]);
+        currentWP = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -42,8 +48,13 @@ public class FollowPath : MonoBehaviour
 
         currentNode = g.getPathPoint(currentWP);
 
-        if(Vector3.Distance(g.getPathPoint(currentWP).transform.position,transform.position) <accuracy)
-            {
+        if(Vector3.Distance(g.getPathPoint(currentWP).transform.position,transform.position) < accuracy)
+        {
+            currentWP++;
+        }
+
+        if(currentWP < g.getPathLength())
+        {
             goal = g.getPathPoint(currentWP).transform;
             Vector3 lookAtGoal = new Vector3(goal.position.x, this.transform.position.y, goal.position.z);
             Vector3 direction = lookAtGoal - this.transform.position;
@@ -51,6 +62,6 @@ public class FollowPath : MonoBehaviour
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotSpeed);
 
             this.transform.Translate(0, 0, speed * Time.deltaTime);
-            }
+        }
     }
 }
