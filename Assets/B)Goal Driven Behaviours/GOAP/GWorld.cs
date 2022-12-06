@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class GWorld 
+public sealed class GWorld
 {
     private static readonly GWorld instance = new GWorld();
     private static WorldStates world;
@@ -14,7 +14,6 @@ public sealed class GWorld
 
     private GWorld()
     {
-
     }
 
     public static GWorld Instance

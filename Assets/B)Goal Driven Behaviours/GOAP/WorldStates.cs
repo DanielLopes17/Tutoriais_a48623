@@ -1,7 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 [System.Serializable]
 public class WorldState
@@ -19,7 +18,7 @@ public class WorldStates
         states = new Dictionary<string, int>();
     }
 
-    public bool MassState(string key)
+    public bool HasState(string key)
     {
         return states.ContainsKey(key);
     }
@@ -29,18 +28,16 @@ public class WorldStates
         states.Add(key, value);
     }
 
-    public void ModifyState(string key,int value)
+    public void ModifyState(string key, int value)
     {
         if (states.ContainsKey(key))
         {
             states[key] += value;
             if (states[key] <= 0)
-            {
                 RemoveState(key);
-            }
-            else
-                states.Add(key, value);
         }
+        else
+            states.Add(key, value);
     }
 
     public void RemoveState(string key)
@@ -61,5 +58,4 @@ public class WorldStates
     {
         return states;
     }
-    
 }

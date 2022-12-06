@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -20,12 +20,12 @@ public class GAgent : MonoBehaviour
 {
     public List<GAction> actions = new List<GAction>();
     public Dictionary<SubGoal, int> goals = new Dictionary<SubGoal, int>();
+    public WorldStates beliefs = new WorldStates();
 
     GPlanner planner;
     Queue<GAction> actionQueue;
     public GAction currentAction;
     SubGoal currentGoal;
-
 
     // Start is called before the first frame update
     public void Start()
@@ -35,6 +35,7 @@ public class GAgent : MonoBehaviour
             actions.Add(a);
     }
 
+
     bool invoked = false;
     void CompleteAction()
     {
@@ -43,10 +44,8 @@ public class GAgent : MonoBehaviour
         invoked = false;
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
-
         if (currentAction != null && currentAction.running)
         {
             if (currentAction.agent.hasPath && currentAction.agent.remainingDistance < 1f)
@@ -75,7 +74,6 @@ public class GAgent : MonoBehaviour
                     break;
                 }
             }
-
         }
 
         if (actionQueue != null && actionQueue.Count == 0)
@@ -93,9 +91,7 @@ public class GAgent : MonoBehaviour
             if (currentAction.PrePerform())
             {
                 if (currentAction.target == null && currentAction.targetTag != "")
-                {
                     currentAction.target = GameObject.FindWithTag(currentAction.targetTag);
-                }
 
                 if (currentAction.target != null)
                 {
@@ -107,6 +103,8 @@ public class GAgent : MonoBehaviour
             {
                 actionQueue = null;
             }
+
         }
+
     }
 }
