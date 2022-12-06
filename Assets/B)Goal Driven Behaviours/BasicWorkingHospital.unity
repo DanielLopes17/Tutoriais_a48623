@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e70aa644dc65147b5ead7a90ac1cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Action
+  actionName: Go To Cubicle
   cost: 1
   target: {fileID: 0}
   targetTag: 
@@ -374,6 +374,19 @@ MonoBehaviour:
     value: 0
   agent: {fileID: 0}
   running: 0
+--- !u!114 &156335541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156335535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eceaf0f59c5060b459e8a06a993545c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisAgent: {fileID: 156335539}
 --- !u!1 &306721101
 GameObject:
   m_ObjectHideFlags: 0
