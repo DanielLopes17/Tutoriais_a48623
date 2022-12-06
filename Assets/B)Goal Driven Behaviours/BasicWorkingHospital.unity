@@ -296,7 +296,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -331,7 +331,7 @@ MonoBehaviour:
   - key: FreeCubicle
     value: 1
   afterEffects:
-  - key: treatPatient
+  - key: patientPickedup
     value: 1
   agent: {fileID: 0}
   running: 0
@@ -349,6 +349,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   currentAction: {fileID: 0}
+--- !u!114 &156335540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156335535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e70aa644dc65147b5ead7a90ac1cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Action
+  cost: 1
+  target: {fileID: 0}
+  targetTag: 
+  duration: 0
+  preConditions:
+  - key: patientPickedup
+    value: 0
+  afterEffects:
+  - key: treatPatient
+    value: 0
+  agent: {fileID: 0}
+  running: 0
 --- !u!1 &306721101
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,7 +2047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patientPrefab: {fileID: 3191194391350855714, guid: 0fce119190bf0449caee6a98f2307710, type: 3}
-  numPatients: 15
+  numPatients: 3
 --- !u!4 &1182480220
 Transform:
   m_ObjectHideFlags: 0
@@ -4047,36 +4072,6 @@ Transform:
   m_Father: {fileID: 742992260}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1 &1981692563 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3191194391350855714, guid: 0fce119190bf0449caee6a98f2307710, type: 3}
-  m_PrefabInstance: {fileID: 4695191399129213722}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1981692571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981692563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6dced48f821d5c46ba2501ce9b19dac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Get Treated
-  cost: 1
-  target: {fileID: 0}
-  targetTag: 
-  duration: 0
-  preConditions:
-  - key: atHospital
-    value: 0
-  afterEffects:
-  - key: isTreated
-    value: 0
-  agent: {fileID: 0}
-  running: 0
 --- !u!1 &1999376859
 GameObject:
   m_ObjectHideFlags: 0
@@ -4523,14 +4518,6 @@ PrefabInstance:
     - target: {fileID: 3203887786870572470, guid: 0fce119190bf0449caee6a98f2307710, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4695191399491926532, guid: 0fce119190bf0449caee6a98f2307710, type: 3}
-      propertyPath: m_Speed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4695191399491926587, guid: 0fce119190bf0449caee6a98f2307710, type: 3}
-      propertyPath: duration
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fce119190bf0449caee6a98f2307710, type: 3}
